@@ -4,14 +4,14 @@ def neighbors(central, exchangeOrders):
     return list(map(lambda x: x[1], result))
 
 # busca em largura  
-def find_path_minimun_central(centrals, exchangeOrders, start, goal):
+def breadthSearch(centrals, exchangeOrders, start, goal):
     infinity = float('inf')  # 1
-    n_centrals = len(centrals) # 1
+    centralsNumber = len(centrals) # 1
 
     # 3n - Configurando todos os blocos #
-    c = [False for i in range(n_centrals)] # n
-    d = [infinity for i in range(n_centrals)] # n
-    a = ['null' for i in range(n_centrals)] # n
+    c = [False for i in range(centralsNumber)] # n
+    d = [infinity for i in range(centralsNumber)] # n
+    a = ['null' for i in range(centralsNumber)] # n
 
     # 2 - Configurando o vértice de origem #
     c[start] = True # 1
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     # Monta um grafo C = {0, 1, 2, 3, 4}
     C = [i for i in range(verticesNumber)]
     L = [[0, 1], [0, 2], [1, 3], [3, 4], [2, 4]]
-    path = find_path_minimun_central(C, L, 0, 4)
+    path = breadthSearch(C, L, 0, 4)
     if len(path) == 1:
         print("Não há caminho")
     else:
